@@ -1,0 +1,2 @@
+# django-space
+Django playground 

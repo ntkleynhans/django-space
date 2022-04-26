@@ -1,15 +1,11 @@
-
-PYTHON = $(shell which python3.9)
-
-venv:
-	$(PYTHON) -m venv venv
-
-install:
-	$(PYTHON) -m pip install -r requirements.txt
-
 format:
-	black rndsite/
+	docker-compose run --rm rnd-web black $(FOLDER)
 
 lint:
-	pylint --load-plugins pylint_django --django-settings-module=rndsite.settings rndsite/rndsite rndsite/basic
+	docker-compose run --rm rnd-web pylint --load-plugins pylint_django --django-settings-module=rndsite.settings $(FOLDER)
 
+build:
+	docker-compose up
+
+server:
+	docker-compose run --rm rnd-web python manage.py runserver

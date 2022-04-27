@@ -8,4 +8,14 @@ build:
 	docker-compose up
 
 server:
-	docker-compose run --rm rnd-web python manage.py runserver
+	docker-compose run -p 127.0.0.1:8000:8000 --rm rnd-web python manage.py runserver 0.0.0.0:8000
+
+makemigration:
+	docker-compose run --rm rnd-web python manage.py makemigrations
+
+migrate:
+	docker-compose run --rm rnd-web python manage.py migrate
+
+createsuperuser:
+	docker-compose run --rm rnd-web python manage.py createsuperuser
+

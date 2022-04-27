@@ -10,7 +10,7 @@ build:
 server:
 	docker-compose run -p 127.0.0.1:8000:8000 --rm rnd-web python manage.py runserver 0.0.0.0:8000
 
-makemigration:
+makemigrations:
 	docker-compose run --rm rnd-web python manage.py makemigrations
 
 migrate:

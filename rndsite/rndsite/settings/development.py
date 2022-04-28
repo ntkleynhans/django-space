@@ -85,6 +85,10 @@ DATABASES = {
     }
 }
 
+# Celery
+CELERY_BROKER_URL = "redis://rnd-redis:6379"
+CELERY_RESULT_BACKEND = "redis://rnd-redis:6379"
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 

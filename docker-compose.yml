@@ -16,4 +16,16 @@ services:
       - ./rndsite/:/app
     depends_on:
       - "rnd-db"
-
+  rnd-redis:
+    image: redis:alpine
+  rnd-celery:
+    build: .
+    #command: celery -A app worker -l info
+    volumes:
+      - ./rndsite:/app
+    env_file:
+      - ./rndsite/.env
+    depends_on:
+      - rnd-db
+      - rnd-redis
+      - rnd-web
